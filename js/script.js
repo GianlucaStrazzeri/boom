@@ -27,7 +27,7 @@ const result=document.getElementById("result");
 
   //Defino una constante sin ponerle resultado para definirla con setTimeOut
   let reverseCount;
-  
+  let fraseResult;   
 
   const promesa1 = new Promise((resolve) => {
     setTimeout(() => {
@@ -72,32 +72,75 @@ const result=document.getElementById("result");
     }, 6000);
   });
 
+  const promesa7 = new Promise((resolve) => {
+    setTimeout(() => {
+      if (userInput == numberRandom1){
+        console.log("<p>Te has salvado</p>");
+       } else if (userInput != numberRandom1) {
+         console.log("<p>vas a explotar capullín</p>");
+       }
+      resolve(fraseResult);
+    }, 7000);
+  });
+
+  function resolvePromesas(promesa){
   promesa1.then((reverseCount) => {
-        result.innerHTML = reverseCount;
+        countdown.innerHTML = reverseCount;
     return promesa2;
   });
   
   promesa2.then((reverseCount) => {
-    result.innerHTML = reverseCount;
+    countdown.innerHTML = reverseCount;
     return promesa3;
   });
   
   promesa3.then((reverseCount) => {
-    result.innerHTML = reverseCount;
+    countdown.innerHTML = reverseCount;
     return promesa4;
   });
 
   promesa4.then((reverseCount) => {
-    result.innerHTML = reverseCount;
+    countdown.innerHTML = reverseCount;
     return promesa5;
   });
   
   promesa5.then((reverseCount) => {
-    result.innerHTML = reverseCount;
+    countdown.innerHTML = reverseCount;
     return promesa6;
   });
   
   promesa6.then((reverseCount) => {
-    result.innerHTML = "¿Explotarás?  O ¿Quedarás vivo?";
-    return promesa1;
+    countdown.innerHTML = "¿Explotarás?  O ¿Quedarás vivo?";
+    return promesa7;
   });
+
+  promesa7.then((reverseCount) => {
+    result.innerHTML = fraseResult;
+  });
+
+  resolvePromesas();
+
+  let numberRandom1; 
+   numberRandom1=(Math.floor(Math.random() * 3)+1);
+  console.log(numberRandom1);
+
+  //function result(result, userInput, numberRandom1){
+  //if (userInput == numberRandom1){
+  // result.innerHTML("<p>Te has salvado</p>");
+ // } else if (userInput != numberRandom1) {
+ //   result.innerHTML("<p>vas a explotar capullín</p>");
+ // }}
+ //
+ // result(result);
+
+ 
+
+ 
+//
+//IF ELSE FUNCIONANTE SI NO FUERA PORQUE TIENE QUE ESPERAR AL COUNTDOWN PARA FUNCIONAR
+// if (userInput == numberRandom1){
+//   console.log("<p>Te has salvado</p>");
+ // } else if (userInput != numberRandom1) {
+ //   console.log("<p>vas a explotar capullín</p>");
+ // }
+ // // 
